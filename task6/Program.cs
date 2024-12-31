@@ -1,7 +1,44 @@
 ﻿namespace task6
 
 {
-     class Program
+
+    // Enum for days of the week
+    enum WeekDays
+    {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    }
+    // Enum for seasons
+    enum Season
+    {
+        Spring,
+        Summer,
+        Autumn,
+        Winter
+    }
+    // Enum for permissions
+    enum Permissions
+    {
+        Read ,
+        Write ,
+        Delete,
+        Execute
+    }
+
+    // Enum for colors
+    enum Colors
+    {
+        Red,
+        Green,
+        Blue,
+    }
+
+    class Program
     {
         #region q1 Sum of Digits Function
         static int SumOfDigits(int number)
@@ -76,50 +113,106 @@
 
         static void Main()
         {
-            #region Sum of Digits Example
-            Console.Write("Enter a number for Sum of Digits: ");
-            int number = int.Parse(Console.ReadLine());
-            Console.WriteLine($"The sum of the digits of the number {number} is: {SumOfDigits(number)}");
+            #region Sum of Digits 
+            //Console.Write("Enter a number: ");
+            //int number = int.Parse(Console.ReadLine());
+            //Console.WriteLine($"The sum is: {SumOfDigits(number)}");
             #endregion
 
-            #region IsPrime Example
-            Console.Write("Enter a number to check if it's prime: ");
-            number = int.Parse(Console.ReadLine());
-            Console.WriteLine(IsPrime(number) ? $"{number} is a prime number." : $"{number} is not a prime number.");
+            #region IsPrime
+            //Console.Write("Enter a number: ");
+            //int number = int.Parse(Console.ReadLine());
+            //Console.WriteLine(IsPrime(number));
             #endregion
 
-            #region MinMaxArray Example
-            int[] array = { 10, 20, 5, 8, 30, 3 };
-            MinMaxArray(array, out int min, out int max);
-            Console.WriteLine($"Array: {string.Join(", ", array)}");
-            Console.WriteLine($"Minimum: {min}, Maximum: {max}");
+            #region MinMaxArray 
+            //int[] array = { 10, 20, 5, 8, 30, 3 };
+            //MinMaxArray(array, out int min, out int max);
+            //Console.WriteLine($"Minimum: {min}, Maximum: {max}");
             #endregion
 
             #region Factorial Example
-            Console.Write("Enter a number to calculate its factorial: ");
-            number = int.Parse(Console.ReadLine());
-            Console.WriteLine($"Factorial of {number} is {Factorial(number)}");
+            //Console.Write("Enter a number to calculate its factorial: ");
+            //int number = int.Parse(Console.ReadLine());
+            //Console.WriteLine($"Factorial is {Factorial(number)}");
             #endregion
 
             #region Sum and Subtraction Example
-            Console.Write("Enter first number: ");
-            int num1 = int.Parse(Console.ReadLine());
-            Console.Write("Enter second number: ");
-            int num2 = int.Parse(Console.ReadLine());
-            SumAndSubtract(num1, num2, out int sum, out int difference);
-            Console.WriteLine($"Sum: {sum}, Difference: {difference}");
+            //Console.Write("Enter first number: ");
+            //int num1 = int.Parse(Console.ReadLine());
+            //Console.Write("Enter second number: ");
+            //int num2 = int.Parse(Console.ReadLine());
+            //SumAndSubtract(num1, num2, out int sum, out int difference);
+            //Console.WriteLine($"Sum: {sum}, Difference: {difference}");
             #endregion
 
             #region Change Character in String Example
-            Console.Write("Enter a string: ");
-            string inputString = Console.ReadLine();
-            Console.Write("Enter position to modify (0-based): ");
-            int position = int.Parse(Console.ReadLine());
-            Console.Write("Enter new character: ");
-            char newChar = Console.ReadKey().KeyChar;
-            Console.WriteLine();
-            Console.WriteLine($"Modified string: {ChangeChar(inputString, position, newChar)}");
+            //Console.Write("Enter a string: ");
+            //string inputString = Console.ReadLine();
+            //Console.Write("Enter position to modify (0-based): ");
+            //int position = int.Parse(Console.ReadLine());
+            //Console.Write("Enter new character: ");
+            //char newChar = Console.ReadKey().KeyChar;
+            //Console.WriteLine();
+            //Console.WriteLine($"Modified string: {ChangeChar(inputString, position, newChar)}");
             #endregion
+
+            # region Print all days of the week
+            Console.WriteLine("Days of the Week:");
+            foreach (var day in Enum.GetValues(typeof(WeekDays)))
+            {
+                Console.WriteLine(day);
+            }
+            #endregion
+
+            #region  Display season's month range
+            Console.WriteLine("Enter a season:");
+            string seasonInput = Console.ReadLine();
+            if (Enum.TryParse(seasonInput, true, out Season season))
+            {
+                switch (season)
+                {
+                    case Season.Spring:
+                        Console.WriteLine("Spring: March to May");
+                        break;
+                    case Season.Summer:
+                        Console.WriteLine("Summer: June to August");
+                        break;
+                    case Season.Autumn:
+                        Console.WriteLine("Autumn: September to November");
+                        break;
+                    case Season.Winter:
+                        Console.WriteLine("Winter: December to February");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid season.");
+                        break;
+                }
+            }
+            #endregion
+
+            #region
+            #endregion
+            #region  Check primary colors
+            Console.WriteLine("\nEnter a color:");
+            string colorInput = Console.ReadLine();
+            if (Enum.TryParse(colorInput, true, out Colors color))
+            {
+                switch (color)
+                {
+                    case Colors.Red:
+                    case Colors.Green:
+                    case Colors.Blue:
+                        Console.WriteLine($"{color} is a primary color.");
+                        break;
+                    default:
+                        Console.WriteLine($"{color} is not a primary color.");
+                        break;
+                }
+            }
+         
+            #endregion
+
         }
     }
 }
